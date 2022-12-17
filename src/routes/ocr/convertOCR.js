@@ -6,10 +6,8 @@ const convertOCR = async (req, res) => {
   try {
     const { files } = req;
     for (const file of files) {
-      console.log(file);
       const formData = new FormData();
       formData.append("file", fs.createReadStream(file.path));
-      console.log(file);
       const { data } = await axios.post(
         "https://api.ocr.space/parse/image",
         formData,
