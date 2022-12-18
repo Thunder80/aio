@@ -1,8 +1,11 @@
-import { getDocs, collection } from "firebase/firestore"; 
+const db = require("../../firebase");
+const getSnapData = require("../../utils/getSnapData");
 
 const getStudents = async (req, res) => {
-    const students = await getDocs(collection(db, "student"));
-    res.json({ students });
-}
+  const snap = await db.collection("student").get();
+  const data = getSnapData(snap);
 
-export default getStudents;
+  res.json({ students: data });
+};
+
+module.exports = getStudents;

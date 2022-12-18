@@ -1,7 +1,8 @@
-import { Router } from "express";
+const { Router } = require("express");
+const getStudents = require("./get");
 
 const StudentRouer = Router();
 
 StudentRouer.get("/", getStudents);
 
-export default StudentRouer;
+module.exports = StudentRouer;

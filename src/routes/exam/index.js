@@ -1,7 +1,8 @@
-import { Router } from "express";
+const { Router } = require("express");
+const getExams = require("./get");
 
 const ExamRouter = Router();
 
-ExamRouter.get("/", getExam);
+ExamRouter.get("/", getExams);
 
-export default ExamRouter;
+module.exports = ExamRouter;

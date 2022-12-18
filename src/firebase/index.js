@@ -1,7 +1,8 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+const firebase = require("firebase");
+require("firebase/firestore");
+const firebaseConfig = require("./config");
 
-const firebaseConfig = {};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+module.exports = db;

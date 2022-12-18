@@ -1,7 +1,8 @@
-import getTeachers from "./get";
+const { Router } = require("express");
+const getTeachers = require("./get");
 
 const TeacherRouter = Router();
 
 TeacherRouter.get("/", getTeachers);
 
-export default TeacherRouter;
+module.exports = TeacherRouter;
