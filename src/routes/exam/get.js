@@ -5,7 +5,7 @@ const getExams = async (req, res) => {
   const snap = await db.collection("exam").get();
   const data = getSnapData(snap);
 
-  res.json({ exams: data });
+  res.json( data );
 };
 
 module.exports = getExams;
