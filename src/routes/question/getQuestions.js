@@ -7,7 +7,7 @@ const getQuestions = async (req, res) => {
   const snap = await db.collection("question").where("exam_id", "==", id).get();
   const data = getSnapData(snap);
 
-  res.json({ questions: data });
+  res.json( data );
 };
 
 module.exports = getQuestions;
