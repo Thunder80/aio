@@ -8,6 +8,7 @@ const getQuestions = async (req, res) => {
   const data = getSnapData(snap);
 
   res.json( data );
+
 };
 
 module.exports = getQuestions;
