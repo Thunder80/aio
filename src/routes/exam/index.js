@@ -3,6 +3,6 @@ const getExams = require("./get");
 
 const ExamRouter = Router();
 
-ExamRouter.get("/", getExams);
+ExamRouter.get("/:dept", getExams);
 
 module.exports = ExamRouter;

@@ -3,6 +3,6 @@ const getTeachers = require("./get");
 
 const TeacherRouter = Router();
 
-TeacherRouter.get("/", getTeachers);
+TeacherRouter.get("/:dept", getTeachers);
 
 module.exports = TeacherRouter;

@@ -2,10 +2,10 @@ const e = require("express");
 const db = require("../../firebase");
 const getSnapData = require("../../utils/getSnapData");
 
-const getStudentsByEmail = async (req, res) => {
+const getTeachersByEmail = async (req, res) => {
   const { email } = req.params;
 
-  const snap = await db.collection("student").where("email", "==", email).get();
+  const snap = await db.collection("teacher").where("email", "==", email).get();
   if(snap.empty){
     res.json({ email : "notFound",name : "none",dept : "none",id : "none" })
   }
@@ -15,4 +15,4 @@ const getStudentsByEmail = async (req, res) => {
   }
 };
 
-module.exports = getStudentsByEmail;
+module.exports = getTeachersByEmail;
