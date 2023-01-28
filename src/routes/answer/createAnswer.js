@@ -11,10 +11,13 @@ const createAnswer = async (req, res) => {
     .get();
   const questions = getSnapData(snap);
 
+  answersData = { data : req.body};
+
   const batch = db.batch();
+  batch.set(db.collection("answer").doc(), answersData);
   let marks = 0;
   for (const answer of req.body) {
-    batch.set(db.collection("answer").doc(), answer);
+    
     for (const question of questions) {
       if (question.answer === answer.mcq || question.answer === answer.answer) {
         marks += +question.marks;
