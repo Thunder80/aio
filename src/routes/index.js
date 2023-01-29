@@ -9,6 +9,7 @@ const StudentByEmailRouter = require("./studentByEmail");
 const TeacherByEmailRouter = require("./teacherByEmail");
 const SubjectsRouter = require("./subjects");
 const UserRouter = require("./user");
+const AttemptRouter= require("./attemptExam");
 
 const router = Router();
 
@@ -22,5 +23,6 @@ router.use("/studentByEmail", StudentByEmailRouter);
 router.use("/teacherByEmail", TeacherByEmailRouter);
 router.use("/subjects", SubjectsRouter);
 router.use("/getUser", UserRouter);
+router.use("/attempt", AttemptRouter);
 
 module.exports = router;

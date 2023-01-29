@@ -13,11 +13,11 @@ const getUser = async (req, res) => {
   else{
     const snapT = await db.collection("teacher").where("email", "==", email).get();
     const dataT = getSnapData(snapT);
-    if(!snapS.empty){
-      res.json({ type : "teacher" , student : dataT[0] })
+    if(!snapT.empty){
+      res.json({ type : "teacher" , teacher : dataT[0] })
     }
     else{
-      res.json({ type : "none" , student : {} })
+      res.json({ type : "none" , student : {}, teacher : {} })
     }
   }
 };
