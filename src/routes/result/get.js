@@ -2,14 +2,19 @@ const db = require("../../firebase");
 const getSnapData = require("../../utils/getSnapData");
 
 const getResults = async (req, res) => {
-  const student_id = req.headers["x-id"];
+  const { exam_id } = req.params;
   const snap = await db
     .collection("result")
-    .where("student_id", "==", student_id)
+    .where("exam_id", "==", exam_id)
     .get();
   const data = getSnapData(snap);
-
-  res.json(data);
+  if(snap.empty)
+  {
+    res.json([])
+  }
+  else{
+    res.json(data);
+  }
 };
 
 module.exports = getResults;
