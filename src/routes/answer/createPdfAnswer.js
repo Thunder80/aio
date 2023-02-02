@@ -6,7 +6,6 @@ const axios = require("axios");
 const createPdfAnswer = async (req, res) => {
   const exam_id = req.body?.exam_id;
   const student_id = req.body?.student_id;
-  console.log();
 
   const formData = new FormData();
   formData.append("file", fs.createReadStream(req.file.path));
@@ -19,14 +18,16 @@ const createPdfAnswer = async (req, res) => {
       },
     }
   );
-  console.log(data?.ParsedText);
+  console.log(data?.ParsedResults[0]?.ParsedText);
 
   answersData = {
     data: {
       exam_id,
       student_id,
       question_id: null,
-      answer: data?.ParsedText ? data.ParsedText : "",
+      answer: data?.ParsedResults[0]?.ParsedText
+        ? data?.ParsedResults[0]?.ParsedText
+        : "",
       file_name: req.answerFile.name,
     },
   };
