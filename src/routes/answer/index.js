@@ -21,7 +21,7 @@ var storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-AnswerRouter.get("/:id", getAnswers);
+AnswerRouter.get("/:eid/:sid", getAnswers);
 AnswerRouter.post("/", createAnswer);
 AnswerRouter.post("/pdf", upload.single("file"), createPdfAnswer);
 

@@ -16,7 +16,7 @@ const createAnswer = async (req, res) => {
     .get();
   const questions = getSnapData(snap);
 
-  answersData = { data : req.body};
+  answersData = { exam_id : exam_id, student_id : student_id, data : req.body};
 
   const batch = db.batch();
   batch.set(db.collection("answer").doc(), answersData);
