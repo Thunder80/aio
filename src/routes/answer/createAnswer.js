@@ -2,9 +2,10 @@ const db = require("../../firebase");
 const getSnapData = require("../../utils/getSnapData");
 
 const createAnswer = async (req, res) => {
-  const exam_id = req.body[0]?.exam_id;
-  const student_id = req.body[0]?.student_id;
-  const timestamp = req.body[0]?.timestamp;
+  const exam_id = req.body?.exam_id;
+  const student_id = req.body?.student_id;
+  const timestamp = req.body?.timestamp;
+  const answers = req.body?.choiceList;
 
   const snapS = await db.collection("student").where("id", "==", student_id).get();
   dataS = getSnapData(snapS);
@@ -16,7 +17,7 @@ const createAnswer = async (req, res) => {
     .get();
   const questions = getSnapData(snap);
 
-  answersData = { exam_id : exam_id, student_id : student_id, data : req.body};
+  answersData = req.body;
 
   const batch = db.batch();
   batch.set(db.collection("answer").doc(), answersData);
@@ -27,7 +28,7 @@ const createAnswer = async (req, res) => {
     total += +question.marks;
   }
 
-  for (const answer of req.body) {
+  for (const answer of answers) {
     
     for (const question of questions) {
       if ((question.answer === answer.mcq) && (question.qid === answer.question_id)) {
